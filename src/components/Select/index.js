@@ -5,21 +5,19 @@ import PropTypes from "prop-types";
 
 import "./style.scss";
 
-const Select = ({
-  selection,
-  onChange,
-  name,
-  titleEmpty,
-  label,
-  type = "normal",
-}) => {
+const Select = ({selection, onChange,name,titleEmpty,label, type = "normal",}) => {
+// console.log(value);
+
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
+ 
   const changeValue = (newValue) => {
     onChange();
     setValue(newValue);
     setCollapsed(newValue);
+    
   };
+
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
       {label && <div className="label">{label}</div>}
@@ -28,6 +26,7 @@ const Select = ({
           <li className={collapsed ? "SelectTitle--show" : "SelectTitle--hide"}>
             {value || (!titleEmpty && "Toutes")}
           </li>
+
           {!collapsed && (
             <>
               {!titleEmpty && (
@@ -36,13 +35,12 @@ const Select = ({
                   Toutes
                 </li>
               )}
-              {selection.map((s) => (
+              
+              { selection.map((s) => (
                 <li key={s} onClick={() => changeValue(s)}>
-                  <input
-                    defaultChecked={value === s}
-                    name="selected"
-                    type="radio"
-                  />{" "}
+                  <input defaultChecked={value === s} name="selected" type="radio"
+                  />
+                  {" "}
                   {s}
                 </li>
               ))}
@@ -50,6 +48,7 @@ const Select = ({
           )}
         </ul>
         <input type="hidden" value={value || ""} name={name} />
+        
         <button
           type="button"
           data-testid="collapse-button-testid"

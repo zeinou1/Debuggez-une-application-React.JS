@@ -8,8 +8,10 @@ export const BUTTON_TYPES = {
 };
 
 const Button = ({ title, onClick, type, disabled, children }) => {
+ 
   switch (type) {
     case BUTTON_TYPES.DEFAULT:
+
       return (
         <button
           type="button"
@@ -23,6 +25,7 @@ const Button = ({ title, onClick, type, disabled, children }) => {
         </button>
       );
     case BUTTON_TYPES.SUBMIT:
+
       return (
         <input
           disabled={disabled}

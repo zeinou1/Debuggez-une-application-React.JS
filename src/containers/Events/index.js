@@ -13,25 +13,27 @@ const EventList = () => {
   const { data, error } = useData();
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
-  const filteredEvents = (
-    (!type
-      ? data?.events
-      : data?.events) || []
-  ).filter((event, index) => {
-    if (
-      (currentPage - 1) * PER_PAGE <= index &&
-      PER_PAGE * currentPage > index
-    ) {
-      return true;
+  const filteredEvents = ((!type ? data?.events : data?.events) || []).filter(
+    (event, index) => {
+      if ((currentPage - 1) * PER_PAGE <= index && PER_PAGE * currentPage > index) {
+        if (!type || event.type === type) { // Add this condition to filter by category
+          return true;
+        }
+      }
+      return false;
     }
-    return false;
-  });
+  );
+
   const changeType = (evtType) => {
     setCurrentPage(1);
     setType(evtType);
   };
   const pageNumber = Math.floor((filteredEvents?.length || 0) / PER_PAGE) + 1;
   const typeList = new Set(data?.events.map((event) => event.type));
+
+  // Sort the filtered events by category
+  const sortedEvents = filteredEvents.sort((a, b) => a.type.localeCompare(b.type));
+
   return (
     <>
       {error && <div>An error occured</div>}
@@ -45,7 +47,7 @@ const EventList = () => {
             onChange={(value) => (value ? changeType(value) : changeType(null))}
           />
           <div id="events" className="ListContainer">
-            {filteredEvents.map((event) => (
+            {sortedEvents.map((event) => (
               <Modal key={event.id} Content={<ModalEvent event={event} />}>
                 {({ setIsOpened }) => (
                   <EventCard
@@ -59,6 +61,7 @@ const EventList = () => {
               </Modal>
             ))}
           </div>
+
           <div className="Pagination">
             {[...Array(pageNumber || 0)].map((_, n) => (
               // eslint-disable-next-line react/no-array-index-key

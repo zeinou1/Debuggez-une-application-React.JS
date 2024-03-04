@@ -9,7 +9,6 @@ describe("When Form is created", () => {
     await screen.findByText("Prénom");
     await screen.findByText("Personel / Entreprise");
   });
-
   describe("and a click is triggered on the submit button", () => {
     it("the success message is displayed", async () => {
       render(<Home />);

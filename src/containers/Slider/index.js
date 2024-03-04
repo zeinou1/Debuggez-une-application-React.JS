@@ -15,7 +15,7 @@ const Slider = () => {
   );
 
   const nextCard = () => {
-    setTimeout(() => setIndex(index < (byDateDesc?.length ?? 0) - 1 ? index + 1 : 0), 135000);
+    setTimeout(() => setIndex(index < (byDateDesc?.length ?? 0) - 1 ? index + 1 : 0), 5000);
   };
   useEffect(() => {
     nextCard();

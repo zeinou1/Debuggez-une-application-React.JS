@@ -24,7 +24,7 @@ const Page = () => {
         <Menu />
       </header>
       <main>
-        <section className="SliderContainer">
+        <section className="SliderContainer" data-testid = "slide">
           <Slider />
         </section>
         <section className="ServicesContainer">
@@ -54,14 +54,15 @@ const Page = () => {
             </ServiceCard>
           </div>
         </section>
-        <section className="EventsContainer">
+        <section className="EventsContainer" data-testid = "Events">
           <h2 className="Title">Nos réalisations</h2>
           <EventList />
         </section>
+
         <section className="PeoplesContainer">
           <h2 className="Title">Notre équipe</h2>
           <p>Une équipe d’experts dédiés à l’ogranisation de vos événements</p>
-          <div className="ListContainer">
+          <div className="ListContainer" data-testid = "ListPeople">
             <PeopleCard
               imageSrc="/images/stephanie-liverani-Zz5LQe-VSMY-unsplash.png"
               name="Samira"
@@ -114,7 +115,7 @@ const Page = () => {
           </Modal>
         </div>
       </main>
-      <footer className="row">
+      <footer className="row" data-testid = "Footer">
         <div className="col presta">
           <h3>Notre derniére prestation</h3>
           <EventCard

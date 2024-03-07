@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Home from "./index";
+import { getMonth } from "../../helpers/Date";
 
 describe("When Form is created", () => {
   it("a list of fields card is displayed", async () => {
@@ -26,7 +27,7 @@ describe("When Form is created", () => {
 
 });
 
-
+ // test for me
 describe("When a page is created", () => {
   it("a list of events is displayed", () => {
     render(<Home/>);
@@ -45,10 +46,15 @@ describe("When a page is created", () => {
     const Footer = screen.getByTestId("Footer");
     expect(Footer).toBeInTheDocument();
   })
+
   it("an event card, with the last event, is displayed", () => {
     render(<Home/>);
     const Footer = screen.getByTestId("Footer");
     expect(Footer).toBeInTheDocument();
+   
+    const lastEvent = new Date("2022-08-29")
+    expect(getMonth(lastEvent)).toEqual("août")
+ 
 
   })
 });

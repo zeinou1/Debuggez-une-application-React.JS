@@ -27,6 +27,8 @@ describe("When Form is created", () => {
 
 });
 
+
+
  // test for me
 describe("When a page is created", () => {
   it("a list of events is displayed", () => {
@@ -47,6 +49,7 @@ describe("When a page is created", () => {
     expect(Footer).toBeInTheDocument();
   })
 
+  
   it("an event card, with the last event, is displayed", () => {
     render(<Home/>);
     const Footer = screen.getByTestId("Footer");

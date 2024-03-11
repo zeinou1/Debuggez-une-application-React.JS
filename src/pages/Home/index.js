@@ -27,7 +27,7 @@ const Page = () => {
         <section className="SliderContainer" data-testid = "slide">
           <Slider />
         </section>
-        <section className="ServicesContainer">
+        <section className="ServicesContainer" id="Services">
           <h2 className="Title">Nos services</h2>
           <p>Nous organisons des événements sur mesure partout dans le monde</p>
           <div className="ListContainer">
@@ -54,12 +54,12 @@ const Page = () => {
             </ServiceCard>
           </div>
         </section>
-        <section className="EventsContainer" data-testid = "Events">
+        <section className="EventsContainer" data-testid = "Events" id="Realisations">
           <h2 className="Title">Nos réalisations</h2>
           <EventList />
         </section>
 
-        <section className="PeoplesContainer">
+        <section className="PeoplesContainer" id="Equipe">
           <h2 className="Title">Notre équipe</h2>
           <p>Une équipe d’experts dédiés à l’ogranisation de vos événements</p>
           <div className="ListContainer" data-testid = "ListPeople">

@@ -24,10 +24,10 @@ const Slider = () => {
   });
   return (
     <div className="SlideCardList">
-      {byDateDesc?.map((event, idx) => (
-        <>
-          <div
-            key={event.title}
+      {byDateDesc?.map((event,idx) => (
+        // Pour fixer le bug lié au key unique j'ai rajouté un div et j'ai deplacé le key 😀
+        <div key={event.title}>
+          <div 
             className={`SlideCard SlideCard--${index === idx ? "display" : "hide"}`}
           >
             <img src={event.cover} alt="forum" />
@@ -41,9 +41,10 @@ const Slider = () => {
           </div>
           <div className="SlideCard__paginationContainer">
             <div className="SlideCard__pagination">
-              {byDateDesc.map((_, radioIdx) => (
+              {byDateDesc.map((_,radioIdx) => (
                 <input
-                  key={`${event.id}`}
+                    // forget add key here
+                  key={`${_.title}`}
                   type="radio"
                   name="radio-button"
                   checked={index === radioIdx}
@@ -52,10 +53,14 @@ const Slider = () => {
               ))}
             </div>
           </div>
-        </>
+          
+        </div>
       ))}
+      
     </div>
   );
 };
 
 export default Slider;
+
+

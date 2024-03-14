@@ -25,9 +25,11 @@ const Slider = () => {
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event,idx) => (
-        // Pour fixer le bug lié au key unique j'ai rajouté un div et j'ai deplacé le key 😀
+        // Pour fixer le bug lié au key unique j'ai ajouté un div et j'ai deplacé le key
+        // vers le premier div et boom ☀️☀️
+
         <div key={event.title}>
-          <div 
+          <div
             className={`SlideCard SlideCard--${index === idx ? "display" : "hide"}`}
           >
             <img src={event.cover} alt="forum" />
@@ -43,7 +45,7 @@ const Slider = () => {
             <div className="SlideCard__pagination">
               {byDateDesc.map((_,radioIdx) => (
                 <input
-                    // forget add key here
+                    // and add a key here
                   key={`${_.title}`}
                   type="radio"
                   name="radio-button"
